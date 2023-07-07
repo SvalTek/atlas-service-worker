@@ -101,7 +101,7 @@
 			"@config/*": ["./config/*"],
 			"@services/*": ["./src/services/*"],
 			"@controllers/*": ["./src/controllers/*"],
-			"@middlewares/*": ["./src/middlewares/*"],
+			"@middleware/*": ["./src/middleware/*"],
 			"@models/*": ["./src/models/*"],
 			"@store/*": ["./src/store/*"],
 			"@utils/*": ["./src/utils/*"],

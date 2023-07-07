@@ -1,31 +1,5 @@
 import apiRouter from './Router';
-import { PrismaClient } from '@prisma/client/edge'
-const prisma = new PrismaClient()
-
-addEventListener('fetch', (event) => {
-  event.respondWith(handleEvent(event))
-})
-
-async function handleEvent(event: FetchEvent): Promise<Response> {
-  const { request } = event
-
-  // waitUntil method is used for sending logs, after response is sent
-  event.waitUntil(
-    prisma.log
-      .create({
-        data: {
-          level: 'Info',
-          message: `${request.method} ${request.url}`,
-          meta: {
-            headers: JSON.stringify(request.headers),
-          },
-        },
-      })
-      .then()
-  )
-
-  return new Response(`request method: ${request.method}!`)
-}
+import { LogRequest } from '@middleware/service-logger';
 
 /**
  * - Run `npm run dev` in your terminal to start a development server
@@ -40,7 +14,7 @@ export default {
 	// and should return a Response (optionally wrapped in a Promise)
 
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-
+		await LogRequest(request, env, ctx);
 		// You'll find it helpful to parse the request.url string into a URL object. Learn more at https://developer.mozilla.org/en-US/docs/Web/API/URL
 		const url = new URL(request.url);
 
