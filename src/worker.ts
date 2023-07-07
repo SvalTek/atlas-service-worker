@@ -1,5 +1,4 @@
 import apiRouter from './Router';
-import { Router } from "./Router";
 
 /**
  * - Run `npm run dev` in your terminal to start a development server
@@ -8,9 +7,6 @@ import { Router } from "./Router";
  *
  * Learn more at https://developers.cloudflare.com/workers/
 */
-
-const myRouter = new Router();
-
 
 export default {
 	// The fetch handler is invoked when this worker receives a HTTP(S) request

@@ -96,6 +96,16 @@
 
 		/* Completeness */
 		// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-		"skipLibCheck": true /* Skip type checking all .d.ts files. */
+		"skipLibCheck": true, /* Skip type checking all .d.ts files. */
+		"paths": {
+			"@config/*": ["./config/*"],
+			"@services/*": ["./src/services/*"],
+			"@controllers/*": ["./src/controllers/*"],
+			"@middlewares/*": ["./src/middlewares/*"],
+			"@models/*": ["./src/models/*"],
+			"@store/*": ["./src/store/*"],
+			"@utils/*": ["./src/utils/*"],
+			"@types/*": ["./src/types/*"],
+		},
 	}
 }

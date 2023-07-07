@@ -1,14 +1,14 @@
-import { Router } from 'itty-router';
+import { RouteEntry, Router } from 'itty-router';
 
-export const CreateRouter = (path?: string): Router => {
-	const router = Router()
+export const CreateRouter = (path?: string, routes?: RouteEntry[]) => {
+	const router = Router({ base: path, routes });
 	return router
 }
 
 // now let's create a router (note the lack of "new")
-const router = CreateRouter();
+const router = CreateRouter('/api');
 
-router.get('/api/', () => new Response('Hello from API!'));
+router.get('/', () => new Response('Hello from API!'));
 
 // GET collection index
 // router.get('/api/todos', () => new Response('Todos Index!'));
