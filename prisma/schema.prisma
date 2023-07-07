@@ -22,3 +22,36 @@ enum Level {
   Warn
   Error
 }
+
+type AccountProfile {
+  displayName String
+  avatarUrl   String
+  description String
+}
+
+type AccountSettings {
+  language String
+  timezone String
+}
+
+model Accounts {
+  id              String          @id @default(auto()) @map("_id") @db.ObjectId
+  username        String
+  password        String
+  email           String
+  permissionLevel Int
+  profile         AccountProfile
+  settings        AccountSettings
+  createdAt       DateTime        @db.Date
+  SessionData     SessionData[]
+}
+
+model SessionData {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    Accounts @relation(fields: [id], references: [id])
+  cookie    String
+  hash      String
+  data      String
+  expires   DateTime @db.Date
+  createdAt DateTime @db.Date
+}
